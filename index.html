@@ -448,8 +448,7 @@ function render(funds){
     const avail = availableFromBalance(latest.balance);
     const overspend = overspendFromBalance(latest.balance);
     const firstAvail = first ? availableFromBalance(first.balance) : avail;
-    totalAvailable += avail;
-    totalFirstAvailable += firstAvail;
+    totalAvailable += -latest.balance; totalFirstAvailable += first ? -first.balance : -latest.balance;
 
     const netChange = firstAvail - avail; // positive = net spend, negative = net grew
     const loggedGifts = f.gifts.reduce((s,g)=>s+g.amount,0);
